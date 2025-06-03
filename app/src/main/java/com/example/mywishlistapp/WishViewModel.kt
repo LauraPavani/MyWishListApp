@@ -1,4 +1,6 @@
 package com.example.mywishlistapp
 
-class WishViewModel {
+import androidx.lifecycle.ViewModel
+
+class WishViewModel: ViewModel() {
 }

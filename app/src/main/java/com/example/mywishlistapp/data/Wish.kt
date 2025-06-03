@@ -10,8 +10,8 @@ object DummyWish{
     val wishList = listOf(
         Wish(title = "Google Watch 2",
             description = "An Android Watch"),
-        Wish(title = "Be Android Developer",
-            description = "From Android Jr to Sr in a year ;)"),
+        Wish(title = "Become Android Developer",
+            description = "From nothing to Android Dev Jr and then Android Dev Sr in a year ;)"),
         Wish(title = "Start easy and grow fast in the mobile development",
             description = "Making my dreams come true"),
         Wish(title = "New headset",
