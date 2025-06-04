@@ -1,8 +1,9 @@
-package com.example.mywishlistapp
+package com.example.mywishlistapp.data
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.example.mywishlistapp.data.Wish
+import com.example.mywishlistapp.data.WishDao
 
 @Database(
     entities = [Wish :: class],
@@ -10,5 +11,5 @@ import com.example.mywishlistapp.data.Wish
     exportSchema = false
 )
 abstract class WishDataBase : RoomDatabase () {
-    abstract fun wishDao():WishDao
+    abstract fun wishDao(): WishDao
 }

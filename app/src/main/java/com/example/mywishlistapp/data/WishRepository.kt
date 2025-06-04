@@ -1,6 +1,7 @@
-package com.example.mywishlistapp
+package com.example.mywishlistapp.data
 
 import com.example.mywishlistapp.data.Wish
+import com.example.mywishlistapp.data.WishDao
 import kotlinx.coroutines.flow.Flow
 
 class WishRepository(private val wishDao: WishDao) {
