@@ -15,7 +15,7 @@ abstract class WishDao {
     abstract suspend fun addAWish(wishEntity: Wish)
 
     //Loads all wishes from the wish table
-    @Query("Select * from ``wish-table``")
+    @Query("Select * from `wish-table`")
     abstract fun getAllWishes(): Flow<List<Wish>>
 
     @Update
@@ -24,6 +24,6 @@ abstract class WishDao {
     @Delete
     abstract suspend fun deleteAWish(wishEntity: Wish)
 
-    @Query("Select * from ``wish-table`` where id=:id")
+    @Query("Select * from `wish-table` where id=:id")
     abstract fun getAWishById(id:Long): Flow<Wish>
 }
