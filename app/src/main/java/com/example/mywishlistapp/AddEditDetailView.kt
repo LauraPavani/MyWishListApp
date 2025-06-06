@@ -97,7 +97,7 @@ fun AddEditDetailView(
                                 id = id,
                                 title = viewModel.wishTitleState.trim(),
                                 description = viewModel.wishDescriptionState.trim()
-                            ),
+                            )
                         )
                     }else{
                     //AddWish

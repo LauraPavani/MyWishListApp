@@ -1,7 +1,10 @@
 package com.example.mywishlistapp
 
 import android.widget.Toast
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -20,9 +23,12 @@ import androidx.compose.material.SwipeToDismiss
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.rememberDismissState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -49,7 +55,7 @@ fun HomeView(
                 contentColor = Color.White,
                 backgroundColor = Color.Black,
                 onClick =  {
-                    //Toast.makeText(context,"Float Button Clicked", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context,"Float Button Clicked", Toast.LENGTH_LONG).show()
                     //To add Navigation to add screen
                     navController.navigate(Screen.AddScreen.route + "/0L")
 
@@ -57,13 +63,12 @@ fun HomeView(
                 Icon(imageVector = Icons.Default.Add, contentDescription = null)
             }
         }
-
     ){
         val wishlist = viewModel.getAllWishes.collectAsState(initial = listOf())
         LazyColumn(modifier = Modifier
             .fillMaxSize()
             .padding(it)){
-            items(wishlist.value, key = { wish -> wish.id ?: 0L}){
+            items(wishlist.value, key = { wish -> wish.id}){
                 wish ->
                 val dismissState = rememberDismissState(
                     confirmStateChange =  {
@@ -75,7 +80,20 @@ fun HomeView(
                 )
                 SwipeToDismiss(
                     state = dismissState,
-                    background = {},
+                    background = {
+                         val color by animateColorAsState(
+                             if(dismissState.dismissDirection == DismissDirection.EndToStart) Color.Red else Color.Transparent,
+                             label = ""
+                         )
+                        val alignment = Alignment.CenterEnd
+                        Box(
+                            Modifier.fillMaxSize().background(color).padding(horizontal = 20.dp),
+                            contentAlignment = alignment
+                        ){
+                            Icon(Icons.Default.Delete,contentDescription = "Delete Icon",
+                                tint = Color.White)
+                        }
+                    },
                     directions = setOf(DismissDirection.StartToEnd, DismissDirection.EndToStart),
                     dismissThresholds = {FractionalThreshold(0.25f)},
                     dismissContent = {
