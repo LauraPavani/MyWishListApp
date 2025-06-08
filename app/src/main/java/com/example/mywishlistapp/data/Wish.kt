@@ -8,9 +8,9 @@ import androidx.room.PrimaryKey
 data class Wish(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0L,
-    @ColumnInfo("wish-title")
+    @ColumnInfo(name = "wish-title")
     val title: String = "",
-    @ColumnInfo("wish-desc")
+    @ColumnInfo(name = "wish-desc")
     val description: String = ""
 )
 
@@ -25,7 +25,7 @@ object DummyWish{
         Wish(title = "New headset",
             description = "A ParaEar HiFi Stereo Wireless Headphone"),
         Wish(title = "New House",
-            description = "A house anywhere in the shire"),
+            description = "A big house anywhere in the shire"),
         Wish(title = "Popcorn",
             description = "Popcorn with butter"),
 

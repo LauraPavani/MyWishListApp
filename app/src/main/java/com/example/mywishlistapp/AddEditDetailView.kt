@@ -42,7 +42,6 @@ fun AddEditDetailView(
     val snackMessage = remember {
         mutableStateOf("")
     }
-    
     val scope = rememberCoroutineScope()
     val scaffoldState = rememberScaffoldState()
 

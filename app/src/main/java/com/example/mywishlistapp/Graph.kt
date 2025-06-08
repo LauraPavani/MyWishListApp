@@ -6,13 +6,13 @@ import com.example.mywishlistapp.data.WishDataBase
 import com.example.mywishlistapp.data.WishRepository
 
 object Graph {
-    lateinit var database: WishDataBase
+    lateinit var dataBase: WishDataBase
 
     val wishRepository by lazy{
-        WishRepository(wishDao = database.wishDao())
+        WishRepository(wishDao = dataBase.wishDao())
     }
 
     fun provide(context: Context){
-        database = Room.databaseBuilder(context, WishDataBase::class.java, "wishlist.db").build()
+        dataBase = Room.databaseBuilder(context, WishDataBase::class.java, "wishlist.db").build()
     }
 }
